@@ -12,7 +12,7 @@
 <div class="container" id="main">
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default content-main">
-            <form name="question" method="post" action="/users/create">
+            <form name="question" method="post" action="/users">
                 <div class="form-group">
                     <label for="userId">사용자 아이디</label>
                     <input class="form-control" id="userId" name="userId" placeholder="User ID">
@@ -30,7 +30,7 @@
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                 </div>
                 <button type="submit" class="btn btn-success clearfix pull-right">회원가입</button>
-                <div class="clearfix" />
+                <div class="clearfix"></div>
             </form>
         </div>
     </div>

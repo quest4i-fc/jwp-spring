@@ -22,10 +22,10 @@
                 <c:forEach items="${users}" var="user" varStatus="status">
                     <tr>
                         <th scope="row">${status.count}</th>
-                        <td>${user.userId}</td>
+                        <td><a href="/users/${user.userId}">${user.userId}</a></td>
                         <td>${user.name}</td>
                         <td>${user.email}</td>
-                        <td><a href="/users/updateForm?userId=${user.userId}" class="btn btn-success" role="button">수정</a>
+                        <td><a href="/users/${user.userId}/edit" class="btn btn-success" role="button">수정</a>
                         </td>
                     </tr>
                 </c:forEach>

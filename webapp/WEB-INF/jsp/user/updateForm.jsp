@@ -12,8 +12,8 @@
 <div class="container" id="main">
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default content-main">
-            <form name="question" method="post" action="/users/update">
-                <input type="hidden" name="userId" value="${user.userId}" />
+            <form name="question" method="post" action="/users/${user.userId}">
+                <input type="hidden" name="_method" value="PUT" />
                 <div class="form-group">
                     <label>사용자 아이디</label>
                     ${user.userId}
@@ -31,7 +31,7 @@
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="${user.email}">
                 </div>
                 <button type="submit" class="btn btn-success clearfix pull-right">개인정보수정</button>
-                <div class="clearfix" />
+                <div class="clearfix"></div>
             </form>
         </div>
     </div>

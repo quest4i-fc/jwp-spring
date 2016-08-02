@@ -12,7 +12,9 @@ public class UserDao {
 	private static UserDao userDao;
 	private JdbcTemplate jdbcTemplate = JdbcTemplate.getInstance();
 	
-	private UserDao() {}
+	private UserDao() {
+//	    userDao.insert(new User("user1", "password", "user 1", "user1@me.com"));
+	}
 	
 	public static UserDao getInstance() {
 		if (userDao == null) {
@@ -67,5 +69,10 @@ public class UserDao {
                 user.getName(),
                 user.getEmail(),
                 user.getUserId());
+    }
+    
+    public void delete(User user) {
+        String sql = "DELETE FROM USERS WHERE userId = ?";
+        jdbcTemplate.update(sql, user.getPassword(), user.getName(), user.getEmail(), user.getUserId());
     }
 }
