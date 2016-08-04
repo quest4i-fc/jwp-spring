@@ -5,13 +5,14 @@ package next.controller;
 //import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import next.model.User;
 import next.dao.UserDao;
+import next.model.User;
 
 
 @Controller
@@ -31,14 +32,15 @@ public class UserController {
 
     // 2. 사용자 생성 폼.
     @RequestMapping(value="/new", method=RequestMethod.GET)
-    public String form() {
-        return "/user/form";
+    public String form(Model model) {
+        model.addAttribute("user", new User());
+        return "user/form";
     }
 
     // 3. 사용자 생성.
     @RequestMapping(value="", method=RequestMethod.POST)
-    public String create(User newUser) throws Exception {
-        userDao.insert(newUser);
+    public String create(User user) throws Exception {
+        userDao.insert(user);
         return "redirect:/users";
     }
     
@@ -50,15 +52,17 @@ public class UserController {
         mav.addObject("user", user);
         return mav;
     }
-    
+
     // 5. 사용자 수정 폼.
     // /users/{id}/edit - edit()
     @RequestMapping(value="/{userId}/edit", method=RequestMethod.GET)
-    public ModelAndView edit(@PathVariable String userId) throws Exception {
+    public ModelAndView edit(Model model, @PathVariable String userId) throws Exception {
         User user = userDao.findByUserId(userId);
+        model.addAttribute("user", user);
         ModelAndView mav = new ModelAndView("user/updateForm");
         mav.addObject("user", user);
         return mav;
+//        return "user/updateForm";
     }
     
     // 6. 사용자 수정.
@@ -83,6 +87,6 @@ public class UserController {
     // /users/login - login()
     @RequestMapping(value="/login", method=RequestMethod.GET)
     public String login() {
-       return "/user/login";
+       return "user/login";
     }
 }
