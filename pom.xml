@@ -165,7 +165,25 @@
 			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>3.2.2</version>
+		</dependency>
 	</dependencies>
+
+
 	<repositories>
 		<!-- For testing against latest Spring snapshots -->
 		<repository>
@@ -189,6 +207,8 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<outputDirectory>webapp/WEB-INF/classes</outputDirectory>
